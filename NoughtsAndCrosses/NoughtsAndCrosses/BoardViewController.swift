@@ -10,6 +10,8 @@ import UIKit
 
 class BoardViewController: UIViewController {
     
+    var gameObject = OXGame()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
