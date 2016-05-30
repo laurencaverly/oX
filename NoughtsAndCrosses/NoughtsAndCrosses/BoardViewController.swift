@@ -17,5 +17,18 @@ class BoardViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBOutlet var boardView: UIView!
+    
+    @IBAction func newGame(sender: AnyObject) {
+        print("New Game button tapped!")
+    }
 
+    @IBAction func buttonTapped(sender: AnyObject) {
+        
+        let tag = sender.tag
+        print("Button \(tag) tapped!")
+        
+    }
+    
 }
