@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  OXGame.swift
 //  NoughtsAndCrosses
 //
 //  Created by Lauren Caverly on 5/30/16.
@@ -50,6 +50,8 @@ class OXGame {
     
     
     
+    
+    
     func whosTurn() -> CellType {
         
         if turn() % 2 != 0 {
@@ -80,32 +82,10 @@ class OXGame {
     
     
     
-    func winDetection() -> Bool {
+    func computerWinner() -> Bool {
         
-        //check for PLAYER winner in rows
-        if board[0] == CellType.X && board[1] == CellType.X && board[2] == CellType.X {
-            return true
-        } else if board[3] == CellType.X && board[4] == CellType.X && board[5] == CellType.X {
-            return true
-        } else if board[6] == CellType.X && board[7] == CellType.X && board[8] == CellType.X {
-            return true
-            
-        //check for PLAYER winner in columns
-        } else if board[0] == CellType.X && board[3] == CellType.X && board[6] == CellType.X {
-            return true
-        } else if board[1] == CellType.X && board[4] == CellType.X && board[7] == CellType.X {
-            return true
-        } else if board[2] == CellType.X && board[5] == CellType.X && board[8] == CellType.X {
-            return true
-            
-        //check for PLAYER winner in diagonals
-        } else if board[0] == CellType.X && board[4] == CellType.X && board[8] == CellType.X {
-            return true
-        } else if board[2] == CellType.X && board[4] == CellType.X && board[6] == CellType.X {
-            return true
-            
         //check for COMPUTER winner in rows
-        } else if board[0] == CellType.O && board[1] == CellType.O && board[2] == CellType.O {
+        if board[0] == CellType.O && board[1] == CellType.O && board[2] == CellType.O {
             return true
         } else if board[3] == CellType.O && board[4] == CellType.O && board[5] == CellType.O {
             return true
@@ -133,6 +113,43 @@ class OXGame {
     }
     
     
+    func playerWinner () -> Bool {
+    
+        //check for PLAYER winner in rows
+        if board[0] == CellType.X && board[1] == CellType.X && board[2] == CellType.X {
+            return true
+        } else if board[3] == CellType.X && board[4] == CellType.X && board[5] == CellType.X {
+            return true
+        } else if board[6] == CellType.X && board[7] == CellType.X && board[8] == CellType.X {
+            return true
+        
+        //check for PLAYER winner in columns
+        } else if board[0] == CellType.X && board[3] == CellType.X && board[6] == CellType.X {
+            return true
+        } else if board[1] == CellType.X && board[4] == CellType.X && board[7] == CellType.X {
+            return true
+        } else if board[2] == CellType.X && board[5] == CellType.X && board[8] == CellType.X {
+        return true
+        
+        //check for PLAYER winner in diagonals
+        } else if board[0] == CellType.X && board[4] == CellType.X && board[8] == CellType.X {
+            return true
+        } else if board[2] == CellType.X && board[4] == CellType.X && board[6] == CellType.X {
+            return true
+        } else {
+            return false
+        }
+}
+    
+    func winDetection() -> Bool {
+        if playerWinner() == true || computerWinner() == true {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    
     
     func state() -> String {
         
@@ -152,5 +169,4 @@ class OXGame {
     func reset() {
         board = [CellType] (count: 9, repeatedValue: CellType.EMPTY)
     }
-    
 }
